@@ -23,7 +23,7 @@ $ source venv/bin/activate
 Use
 ---
 
-Run the driver using python interactive mode.
+Run the driver in python interactive mode.
 
 ```
 $ python3 -i driver.py
@@ -31,6 +31,6 @@ $ python3 -i driver.py
 
 ```
 >>> deploy_smart_coin(OUTER_PUZZLE)
->>> smart_coin = get_coin("b81fab02112a65a7a762dce9c91ae414d04a5e3875babb05a28b6410eb107333")
+>>> smart_coin = get_coin("b81fab02112a65a7a762dce9c91ae414d04a5e3875babb05a28b6410eb107333") #for example
 >>> spend_smart_coin(smart_coin)
 ```
