@@ -1,7 +1,9 @@
 # py-chialisp-inner_outer
 Chialisp - Inner/Outer Puzzle - Python Driver Study
 
-This project is a study in inner and outer puzzles in chialsip using a python3 driver.
+Purpose
+------------
+This project is a study in inner and outer puzzles in chialisp using a python3 driver for assistance. I've found the concept of using inner puzzles challenging to understand when programming chialisp by hand. Using a python driver to iterate quicker I've found that some of the sticking points, especially around crafting valid solutions for inner puzzles, becomes clearer to debug, analyze and internalize this technique's potential.   
 
 Requirements
 ------------
