@@ -1,0 +1,17 @@
+(mod (
+        PASSWORD_HASH
+        PH
+        AMT
+        password
+        
+    )
+
+    (include condition_codes.clib)
+ 
+    (if (= (sha256 password) PASSWORD_HASH)
+        (list 
+            (list CREATE_COIN PH AMT)
+        )
+        (x "Bad Password")
+    )
+)
