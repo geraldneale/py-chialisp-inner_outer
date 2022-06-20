@@ -8,7 +8,7 @@ This project is a study in inner and outer puzzles in chialisp using a python3 d
 Requirements
 ------------
 
-- Chia Wallet (XCH)
+- A synced Chia wallet (XCH)
 
 Install
 -------
