@@ -4,7 +4,6 @@ from blspy import AugSchemeMPL, G2Element, G1Element, PrivateKey
 import json
 import time
 from cdv.util.load_clvm import load_clvm
-# from chia.util.byte_types import hexstr_to_bytes
 from chia.rpc.full_node_rpc_client import FullNodeRpcClient
 from chia.rpc.wallet_rpc_client import WalletRpcClient
 from chia.types.blockchain_format.coin import Coin
@@ -22,7 +21,7 @@ from chia.util.hash import std_hash
 
 pwd = b"hello"
 pwd_hash = std_hash(pwd)
-target_wallet = "xch1n6meway2mps529suufuetvgscyvh7cff4p2056xzggcu8trg6neszayhnh" #for example    
+#target_wallet = "xch1n6meway2mps529suufuetvgscyvh7cff4p2056xzggcu8trg6neszayhnh" #for example    
 amt = 100
 INNER_PUZZLE = load_clsp_relative("inner-ppc.clsp", ["./"]).curry(pwd_hash,decode_puzzle_hash(target_wallet),amt)
 OUTER_PUZZLE = "outer.clsp"
