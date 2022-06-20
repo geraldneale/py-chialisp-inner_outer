@@ -33,6 +33,6 @@ $ python3 -i driver.py
 
 ```
 >>> deploy_smart_coin(OUTER_PUZZLE)
->>> smart_coin = get_coin("b81fab02112a65a7a762dce9c91ae414d04a5e3875babb05a28b6410eb107333") #for example
+>>> smart_coin = get_coin("b81fab02112a65a7a762dce9c91ae414d04a5e3875babb05a28b6410eb107333") #change coinID to outputted by previous command
 >>> spend_smart_coin(smart_coin)
 ```
