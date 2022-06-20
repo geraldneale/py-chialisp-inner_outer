@@ -24,8 +24,6 @@ $ pip3 install -r requirements.txt
 ```
 Use
 ---
-NOTE: Promised to work on TESTNET10 only. MAINNET usage at your own risk.
-
 Run the driver in python interactive mode.
 ```
 $ python3 -i driver.py
@@ -36,3 +34,4 @@ $ python3 -i driver.py
 >>> smart_coin = get_coin("b81fab02112a65a7a762dce9c91ae414d04a5e3875babb05a28b6410eb107333") #change coinID to outputted by previous command
 >>> spend_smart_coin(smart_coin)
 ```
+NOTE: Promised to work on TESTNET10 only. MAINNET usage at your own risk.
