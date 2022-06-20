@@ -2,8 +2,12 @@
 Chialisp - Inner/Outer Puzzle - Python Driver Study
 
 Purpose
-------------
-This project is to study inner and outer puzzles in chialisp using a python3 driver for assistance. I've found the concept of inner puzzles challenging when programming chialisp by hand. Using a python driver helps to iterate quicker which helps to get beyond some of the stumbling points, like crafting valid solutions for inner puzzles. Using this tool simple inner puzzles usage becomes clearer to debug, analyze and internalize this technique's potential. Designed to be easy to use as-is with the example puzzles and expand from there.  
+------------   
+This project is to study inner and outer puzzles in chialisp using a python3 driver for assistance. I've found this concept challenging when programming chialisp by hand, yet fundamental to understanding how chia blockchain currency exchange works, in general. For example, the standard wallet transaction uses inner puzzles. 
+
+Introduding the python driver helped me to iterate quicker through increasingly complex examples. Once beyond the common stumbling points, like crafting valid solutions for inner puzzles, I began getting the feedback I desired to address some of my bigger picture concerns with chialisp and keep moving forward. 
+
+Using this tool, I hope the simplest version of an inner puzzle construct becomes clearer to debug, analyze and internalize this fundamental technique's potential. I hoped to design it to be easy to clone and use as-is with a single layer inner puzzle example, but the intention is to make the outer puzzle as complex as you want and expand deeper layer into inner-inner puzzles from here.  
 
 Requirements
 ------------
