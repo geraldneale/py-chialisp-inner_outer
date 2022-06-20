@@ -12,7 +12,7 @@ Using this tool, I hope the inner puzzle construct becomes clearer for you to de
 Requirements
 ------------
 
-- A synced Chia wallet (XCH)
+- A synced Chia node and wallet (XCH)
 
 Install
 -------
