@@ -24,9 +24,9 @@ $ pip3 install -r requirements.txt
 ```
 Use
 ---
+NOTE: Promised to work on TESTNET10 only. MAINNET usage at your own risk.
 
-Run the driver in python interactive mode. NOTE: Promised to work on TESTNET10 only. MAINNET usage at your own risk. 
-
+Run the driver in python interactive mode.
 ```
 $ python3 -i driver.py
 ```
