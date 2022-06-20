@@ -21,7 +21,9 @@ from chia.util.hash import std_hash
 
 pwd = b"hello"
 pwd_hash = std_hash(pwd)
-#target_wallet = "xch1n6meway2mps529suufuetvgscyvh7cff4p2056xzggcu8trg6neszayhnh" #for example    
+target_wallet = "xch1n6meway2mps529suufuetvgscyvh7cff4p2056xzggcu8trg6neszayhnh" #change to your wallet address for the value to return to at the end
+if target_wallet == "xch1n6meway2mps529suufuetvgscyvh7cff4p2056xzggcu8trg6neszayhnh":
+    print("NOTE: Set target_wallet to something other than the default by editing driver.py file, unless you want the funds at the end sent to the author's wallet ;)")
 amt = 100
 INNER_PUZZLE = load_clsp_relative("inner-ppc.clsp", ["./"]).curry(pwd_hash,decode_puzzle_hash(target_wallet),amt)
 OUTER_PUZZLE = "outer.clsp"
