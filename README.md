@@ -25,7 +25,7 @@ $ source venv/bin/activate
 Use
 ---
 
-Run the driver in python interactive mode.
+Run the driver in python interactive mode. NOTE: Promised to work on TESTNET10 only. MAINNET usage at your own risk. 
 
 ```
 $ python3 -i driver.py
