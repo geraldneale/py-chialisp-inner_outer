@@ -25,7 +25,7 @@ pwd_hash = std_hash(pwd)
 amt = 100
 INNER_PUZZLE = load_clsp_relative("inner-ppc.clsp", ["./"]).curry(pwd_hash,decode_puzzle_hash(target_wallet),amt)
 OUTER_PUZZLE = "outer.clsp"
-min_fee = 2
+min_fee = 0
 
 def print_json(dict):
     print(json.dumps(dict, sort_keys=True, indent=4))
