@@ -17,7 +17,7 @@ Create and activate a virtualenv (first two lines), then install.
 
 ```
 $ git clone https://github.com/geraldneale/py-chialisp-inner_outer.git
-$ cd into the directory
+$ cd py-chialisp-inner_outer/
 $ pip3 install -r requirements.txt
 $ python3 -m venv venv
 $ source venv/bin/activate
