@@ -16,7 +16,6 @@ from chia.util.config import load_config
 from chia.util.default_root import DEFAULT_ROOT_PATH
 from chia.util.ints import uint16, uint64
 from chia.wallet.transaction_record import TransactionRecord
-from sim import load_clsp_relative
 from chia.util.hash import std_hash
 
 pwd = b"hello"
@@ -24,8 +23,8 @@ pwd_hash = std_hash(pwd)
 target_wallet = "xch1n6meway2mps529suufuetvgscyvh7cff4p2056xzggcu8trg6neszayhnh" #change to your wallet address for the value to return to at the end
 if target_wallet == "xch1n6meway2mps529suufuetvgscyvh7cff4p2056xzggcu8trg6neszayhnh":
     print("NOTE: Set target_wallet to something other than the default by editing driver.py file, unless you want the funds at the end sent to the author's wallet ;)")
-amt = 100
-INNER_PUZZLE = load_clsp_relative("inner-ppc.clsp", ["./"]).curry(pwd_hash,decode_puzzle_hash(target_wallet),amt)
+amt = 1000
+INNER_PUZZLE = load_clvm("inner-ppc.clsp", package_or_requirement=__name__).curry(pwd_hash,decode_puzzle_hash(target_wallet),amt)
 OUTER_PUZZLE = "outer.clsp"
 min_fee = 10        #sometimes there is fee pressure on testnet10
 
