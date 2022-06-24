@@ -17,7 +17,7 @@ Requirements
 Install
 -------
 
-Create and activate a virtualenv (first two lines), then install.
+Download, create and activate a virtualenv.
 
 ```
 $ git clone https://github.com/geraldneale/py-chialisp-inner_outer.git
