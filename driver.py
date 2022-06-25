@@ -82,7 +82,7 @@ async def send_money_async(address, fee=min_fee):
         wallet_client.close()
         await wallet_client.await_closed()
 
-#send_money(10000,"txch1y9vvu4t3dd03w7gvvq5jn2ff7ckze5jc8uk3ek8fmahwrufw0jtq0wwgw7",100)
+#send_money("txch1y9vvu4t3dd03w7gvvq5jn2ff7ckze5jc8uk3ek8fmahwrufw0jtq0wwgw7",100) #for example
 def send_money(address, fee=min_fee):
     return asyncio.run(send_money_async(address, fee))
 
