@@ -17,6 +17,7 @@ from chia.util.default_root import DEFAULT_ROOT_PATH
 from chia.util.ints import uint16, uint64
 from chia.wallet.transaction_record import TransactionRecord
 from chia.util.hash import std_hash
+from chia.util.keychain import Keychain
 
 pwd = b"hello"
 pwd_hash = std_hash(pwd)
@@ -27,6 +28,17 @@ amt = 1000
 INNER_PUZZLE = load_clvm("inner-ppc.clsp", package_or_requirement=__name__).curry(pwd_hash,decode_puzzle_hash(target_wallet),amt)
 OUTER_PUZZLE = "outer.clsp"
 min_fee = 10        #sometimes there is fee pressure on testnet10
+
+#sig stuff
+private_key = Keychain().get_all_private_keys()[0][0]
+#print("Private key: {}".format(private_key))
+public_key: G1Element = private_key.get_g1()
+#print("Public key: {}".format(public_key))
+msg = INNER_PUZZLE.get_tree_hash()
+#switch ADD_DATA for environment
+#ADD_DATA = bytes.fromhex("ccd5bb71183532bff220ba46c268991a3ff07eb358e8255a65c30a2dce0e5fbb") #genesis challenge(works for mainnet)
+ADD_DATA = bytes.fromhex("ae83525ba8d1dd3f09b277de18ca3e43fc0af20d20c4b3e92ef2a48bd291ccb2")  #genesis challenge(works for testnet10)
+
 
 def print_json(dict):
     print(json.dumps(dict, sort_keys=True, indent=4))
@@ -89,11 +101,14 @@ def send_money(address, fee=min_fee):
 def deploy_smart_coin(clsp_file: str, fee=min_fee):
     s = time.perf_counter()
     # load coins (compiled and serialized, same content as clsp.hex)
-    mod = load_clvm(clsp_file, package_or_requirement=__name__).curry(INNER_PUZZLE.get_tree_hash())
+    mod = load_clvm(clsp_file, package_or_requirement=__name__).curry(public_key,INNER_PUZZLE.get_tree_hash())
     # cdv clsp treehash
     treehash = mod.get_tree_hash()
     # cdv encode - txch->testnet10 or xch->mainnet
-    address = encode_puzzle_hash(treehash, "xch")
+    if ADD_DATA == bytes.fromhex("ae83525ba8d1dd3f09b277de18ca3e43fc0af20d20c4b3e92ef2a48bd291ccb2"):
+        address = encode_puzzle_hash(treehash, "txch")
+    else:
+        address = encode_puzzle_hash(treehash, "xch")
     coin = send_money(address, fee)
     elapsed = time.perf_counter() - s
     print(f"deploy {clsp_file} with {amt} mojos to {treehash} in {elapsed:0.2f} seconds.")
@@ -120,18 +135,20 @@ async def push_tx_async(spend_bundle: SpendBundle):
         full_node_client.close()
         await full_node_client.await_closed()
 
-def push_tx(spend_bundle: SpendBundle):
+def push_tx(spend_bundle: SpendBundle): 
     return asyncio.run(push_tx_async(spend_bundle))
 
 def spend_smart_coin(smart_coin: Coin):
     # coin information, puzzle_reveal, and solution
     smart_coin_spend = CoinSpend(
         smart_coin,
-       load_clvm(OUTER_PUZZLE, package_or_requirement=__name__).curry(INNER_PUZZLE.get_tree_hash()),
+       load_clvm(OUTER_PUZZLE, package_or_requirement=__name__).curry(public_key,INNER_PUZZLE.get_tree_hash()),
        solution_for_outer(INNER_PUZZLE, pwd)
     )
     #signature
-    signature = G2Element()
+    #signature = G2Element()
+    sig = AugSchemeMPL.sign(private_key, msg + smart_coin.name() + ADD_DATA)
+    signature: G2Element = AugSchemeMPL.aggregate([sig])
     # SpendBundle
     spend_bundle = SpendBundle(
             # coin spends
