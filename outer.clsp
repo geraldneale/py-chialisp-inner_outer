@@ -1,4 +1,5 @@
 (mod (
+    PK                 ; (curryed) your public key
     INNER_PUZZLE_HASH  ; (curryed) The hash of another puzzle, with curryed arguments. Can be any puzzle, including another Legacy Coin. Can be '()' for an empty puzzle.
     inner_puzzle       ; The inner puzzle with curryed arguments, only to be revealed when attempting to spend the coin. Can be '()' for an empty puzzle.
     inner_solution     ; The solution to the inner puzzle. Can be '()' for an empty solution
@@ -12,7 +13,8 @@
     ; If they don't match, raise an error and exit.
     (defun-inline verify_inner (INNER_PUZZLE_HASH inner_puzzle inner_solution)
         (if (= INNER_PUZZLE_HASH (sha256tree1 inner_puzzle))
-            (a inner_puzzle inner_solution)
+            (c (list AGG_SIG_ME PK INNER_PUZZLE_HASH)
+                (a inner_puzzle inner_solution))
             (x "Inner puzzle does not match inner puzzle hash.")
         )
     )
