@@ -27,7 +27,7 @@ if target_wallet == "xch1n6meway2mps529suufuetvgscyvh7cff4p2056xzggcu8trg6neszay
 amt = 1000
 INNER_PUZZLE = load_clvm("inner-ppc.clsp", package_or_requirement=__name__).curry(pwd_hash,decode_puzzle_hash(target_wallet),amt)
 OUTER_PUZZLE = "outer.clsp"
-min_fee = 10000        #sometimes there is fee pressure on testnet10
+min_fee = 10        #sometimes there is fee pressure on testnet10
 
 #sig stuff
 private_key = Keychain().get_all_private_keys()[0][0]
