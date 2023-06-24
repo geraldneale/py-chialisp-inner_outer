@@ -46,8 +46,8 @@ def print_json(dict):
 # # config/config.yaml
 config = load_config(DEFAULT_ROOT_PATH, "config.yaml")
 self_hostname = config["self_hostname"] # localhost
-full_node_rpc_port = config["full_node"]["rpc_port"] # 8555
-wallet_rpc_port = config["wallet"]["rpc_port"] # 9256
+full_node_rpc_port = config["full_node"]["rpc_port"]
+wallet_rpc_port = config["wallet"]["rpc_port"]
 
 async def get_coin_async(coin_id: str):
     try:
@@ -105,10 +105,10 @@ def deploy_smart_coin(clsp_file: str, fee=min_fee):
     # cdv clsp treehash
     treehash = mod.get_tree_hash()
     # cdv encode - txch->testnet10 or xch->mainnet
-    if ADD_DATA == bytes.fromhex("ae83525ba8d1dd3f09b277de18ca3e43fc0af20d20c4b3e92ef2a48bd291ccb2"):
-        address = encode_puzzle_hash(treehash, "txch")
-    else:
+    if ADD_DATA == bytes.fromhex("ccd5bb71183532bff220ba46c268991a3ff07eb358e8255a65c30a2dce0e5fbb"):
         address = encode_puzzle_hash(treehash, "xch")
+    else:
+        address = encode_puzzle_hash(treehash, "txch")
     coin = send_money(address, fee)
     elapsed = time.perf_counter() - s
     print(f"deploy {clsp_file} with {amt} mojos to {treehash} in {elapsed:0.2f} seconds.")
