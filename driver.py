@@ -145,8 +145,8 @@ def spend_smart_coin(smart_coin: Coin):
        load_clvm(OUTER_PUZZLE, package_or_requirement=__name__).curry(public_key,INNER_PUZZLE.get_tree_hash()),
        solution_for_outer(INNER_PUZZLE, pwd)
     )
-    #signature
-    #signature = G2Element()
+    #signature                                
+    #signature = G2Element()     #empty signature
     sig = AugSchemeMPL.sign(private_key, msg + smart_coin.name() + ADD_DATA)
     signature: G2Element = AugSchemeMPL.aggregate([sig])
     # SpendBundle
