@@ -116,13 +116,12 @@ async def push_tx_async(spend_bundle: SpendBundle):
 def push_tx(spend_bundle: SpendBundle): 
     return asyncio.run(push_tx_async(spend_bundle))
 
-pwd2 = b"hello2"
 def spend_smart_coin(smart_coin: Coin):
     # coin information, puzzle_reveal, and solution
     smart_coin_spend = CoinSpend(
         smart_coin,
        load_clvm(OUTER_PUZZLE, package_or_requirement=__name__).curry(INNER_PUZZLE.get_tree_hash()),
-       solution_for_outer(INNER_PUZZLE, pwd2)
+       solution_for_outer(INNER_PUZZLE, pwd)
     )
     #signature                                
     signature = G2Element()     #empty signature
