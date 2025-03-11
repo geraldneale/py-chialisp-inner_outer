@@ -3,11 +3,11 @@ Chialisp - Inner/Outer Puzzle - Python Driver Study
 
 Purpose
 ------------   
-This project is to study inner and outer puzzles in chialisp using a python3 driver for assistance. I've found this concept challenging when programming chialisp by hand, yet fundamental to understanding how chia blockchain currency exchange works. For example, the standard wallet transaction uses an inner puzzle. 
+The goal of this project is to explore and better understand inner and outer puzzles in Chialisp, using a Python 3 driver to facilitate the process. Programming Chialisp manually, especially with inner and outer puzzles, can be complex and challenging. However, these concepts are crucial for understanding how transactions work within the Chia blockchain, particularly when it comes to native currency exchange in this context. For example, the standard transaction utilizes a very early version of the inner puzzle.
 
-Introducing a python3 driver helped me to iterate quicker through increasingly complex examples. Once beyond the common stumbling points, like crafting valid solutions for inner puzzles, I began getting the feedback I desired to address some of my bigger picture concerns with chialisp and keep moving forward. 
+By introducing a Python 3 driver, I've been able to iterate quickly through increasingly complex examples to aid comprhension. Once I overcame initial common challenges, such as creating valid solutions for inner puzzles, I was able to gain necessary insights to address broader concerns related to Chialisp and continue making progress. Progress that is not always so easy following the official documentation.
 
-Using this tool, I hope the inner puzzle construct becomes clearer for you to debug, analyze what is going on and internalize this technique's potential. It is designed to be easy to use as-is with a single layer inner puzzle example, but you can add to the outer puzzle as complex as you want and it should just work. Adding inner-inner puzzles should not be too hard either using the code examples therein already.  
+With this tool, I aim to make the inner puzzle structure more accessible for debugging and analysis. It's been designed to be simple enough for beginners to work with on a single-layer inner puzzle. However, the framework is flexible enough to easily extend into more complexity. For example, you can add multiple layers of inner puzzles using the provided code example. The goal is to make it easier to experiment and deepen your understanding of this powerful technique.
 
 Requirements
 ------------
